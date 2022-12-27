@@ -16,11 +16,11 @@ const Question = () => {
   };
 
   return (
-    <div className="flex flex-col">
-      <p className="text-white mt-4 mb-4 text-2xl">
+    <div className="flex flex-col w-full h-screen px-12 justify-center">
+      <p className="text-white mb-4 text-1xl">
         Pergunta {quizState.currentQuestion + 1} de {quizState.questions.length}
       </p>
-      <h2 className="text-white mb-4 text-2xl">{currentQuestion.question}</h2>
+      <h2 className="text-white mb-4 text-1xl">{currentQuestion.question}</h2>
       <div>
         {currentQuestion.options.map((option) => (
           <Option
@@ -32,30 +32,33 @@ const Question = () => {
           />
         ))}
       </div>
-      {!quizState.answerSelected && !quizState.help && (
-        <>
-          {currentQuestion.tip && (
+      <div className="flex gap-4 justify-end items-end">
+        {!quizState.answerSelected && !quizState.help && (
+          <>
+            {currentQuestion.tip && (
+              <button
+                className="bg-[#4b21f0] p-4 text-white text-center w-40 rounded-sm hover:opacity-75"
+                onClick={() => dispatch({ type: "SHOW_TIP" })}
+              >
+                Dica
+              </button>
+            )}
             <button
-              className="bg-zinc-700 p-4 text-white text-center rounded-lg hover:bg-zinc-600"
-              onClick={() => dispatch({ type: "SHOW_TIP" })}
+              className="bg-[#4b21f0] p-4 text-white text-center w-40 rounded-sm hover:opacity-75"
+              onClick={() => dispatch({ type: "REMOVE_OPTION" })}
             >
-              Dica
+              Excluir uma
             </button>
-          )}
-          <button
-            className="bg-zinc-700 p-4 text-white text-center rounded-lg hover:bg-zinc-600"
-            onClick={() => dispatch({ type: "REMOVE_OPTION" })}
-          >
-            Excluir uma
-          </button>     
-        </>
-      )}
+          </>
+        )}
+      </div>
+
       {!quizState.answerSelected && quizState.help === "tip" && (
         <p className="text-red-500">{currentQuestion.tip}</p>
       )}
       {quizState.answerSelected && (
         <button
-          className="bg-purple-600 p-4 text-white text-center rounded-lg hover:bg-purple-500"
+          className="bg-[#4b21f0] p-4 text-white text-center"
           onClick={() => dispatch({ type: "CHANGE_QUESTION" })}
         >
           Continuar

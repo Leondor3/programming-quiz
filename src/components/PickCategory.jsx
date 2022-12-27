@@ -6,21 +6,20 @@ const PickCategory = () => {
 
   function chooseCategoryAndReorderQuestions(category) {
     dispatch({ type: "START_GAME", payload: category });
-
     dispatch({ type: "REORDER_QUESTIONS" });
   }
 
   return (
-    <div className="flex flex-col">
-      <h2 className="mt-4 mb-4 text-white text-2xl text-center">
+    <div className="flex flex-col w-full h-screen px-12 justify-center">
+      <h2 className="mt-4 mb-4 text-white text-1xl text-left">
         Escolha uma categoria
       </h2>
-      <p className="mt-4 mb-4 text-white text-2xl text-center">
+      <p className="mt-4 mb-4 text-white text-1xl text-left">
         As perguntas serão referentes a uma das linguagens abaixo:
       </p>
       {quizState.questions.map((question) => (
         <button
-          className="bg-purple-600 p-4 mt-4 text-white text-center rounded-lg hover:bg-purple-500"
+          className="bg-[#4b21f0] p-4 text-white text-center mb-2 rounded-sm hover:opacity-75"
           onClick={() => chooseCategoryAndReorderQuestions(question.category)}
           key={question.category}
         >
