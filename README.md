@@ -33,13 +33,10 @@ Siga as etapas abaixo para executar o projeto localmente:
 
     Execute o seguinte comando para instalar as dependências necessárias:
 
-    shell
 
 npm install
 
 Após a conclusão da instalação, execute o seguinte comando para iniciar a aplicação:
-
-shell
 
     npm run dev
 
